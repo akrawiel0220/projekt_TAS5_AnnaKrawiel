@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Demo Bank Tests" verbose="1">
+    <test name="Login Test" preserve-order="true" enabled="true">
+        <classes>
+            <class name="app.vercel.demobank.tests.LoginTest"></class>
+        </classes>
+    </test>
+    <test name="Generate Transfer Test" preserve-order="true" enabled="true">
+        <classes>
+            <class name="app.vercel.demobank.tests.GenerateTransferTest"></class>
+        </classes>
+    </test>
+    <test name="Home Page Test" preserve-order="true" enabled="true">
+        <classes>
+            <class name="app.vercel.demobank.tests.HomePageTest"></class>
+        </classes>
+    </test>
+    <test name="Payments Test" preserve-order="true" enabled="true">
+        <classes>
+            <class name="app.vercel.demobank.tests.PaymentsTest"></class>
+        </classes>
+    </test>
+    <test name="Reports Test" preserve-order="true" enabled="true">
+        <classes>
+            <class name="app.vercel.demobank.tests.ReportsTest"></class>
+        </classes>
+    </test>
+</suite>
