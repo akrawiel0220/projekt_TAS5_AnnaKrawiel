@@ -24,7 +24,7 @@ public class LoginTest extends DemoBankBaseTest {
     }
 
     @Test(description = "Niepoprawne logowanie użytkownika - za krótkie haslo")
-    public void invalidLoginWithTooShortPasswordTest() throws InterruptedException {
+    public void invalidLoginWithTooShortPasswordTest() {
         LoginPage loginPage = new LoginPage(driver).open(baseUrl).loginInvalidPassword(username, "pass");
         Assert.assertTrue(loginPage.getErrorMessagePassword().contains("hasło ma min. 8 znaków"));
     }
