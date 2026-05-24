@@ -18,8 +18,11 @@ public class MainPage {
     private final WebDriverWait wait;
 
 
-    @FindBy(css = "a[href='pulpit.html']")
+    @FindBy(css = "div.category.active > a[href='pulpit.html']")
     private WebElement pulpitTab;
+
+    @FindBy(xpath = "//a[@href='phone.html'][contains(normalize-space(),'doładowanie telefonu')]")
+    private WebElement phoneTab;
 
     @FindBy(css = "user_name")
     private WebElement accountName;
@@ -116,4 +119,9 @@ public class MainPage {
         }
     }
 
+    @Step("Klikamy w zakładke 'doładowanie telefonu'")
+    public PhonePage clickPhoneTopUpTab() {
+        phoneTab.click();
+        return new PhonePage(driver);
+    }
 }

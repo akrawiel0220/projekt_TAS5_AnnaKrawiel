@@ -5,15 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class TransferModalPage extends ModalBasePage {
+public class TopUpPhoneModalPage extends ModalBasePage {
 
-    @FindBy(xpath = "//span[text()='Przelew wykonany']/following::div/p")
+    @FindBy(xpath = "//span[text()='Doładowanie wykonane']/following::div/p")
     private WebElement sumTexts;
 
     @FindBy(xpath = "//button[@data-testid='close-button']/span")
     private WebElement okButton;
 
-    public TransferModalPage(WebDriver driver) {
+    public TopUpPhoneModalPage(WebDriver driver) {
         super(driver);
     }
 

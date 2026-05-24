@@ -26,11 +26,11 @@ public class MainPageTest extends DemoBankBaseTest {
         Assert.assertEquals(actualTransferText, titleTransferText);
 
         TransferModalPage transferModalPage = mainPage.clickExecuteButton();
-        String textsFromTransferModalWindow = transferModalPage.getAllSummaryTexts();
+        String textsFromTransferModalWindow = transferModalPage.getAllSummaryText();
         String expectedTextsTransferModalWindow = "Przelew wykonany!\n\nOdbiorca: " + expectedReceiver + "\nKwota: " + amountToSend + "PLN\nNazwa: " + titleTransferText;
         Assert.assertEquals(textsFromTransferModalWindow, expectedTextsTransferModalWindow);
         transferModalPage.clickOkButton();
-        Assert.assertFalse(transferModalPage.checkIfModalWindowIsDisplayed());
+        Assert.assertFalse(transferModalPage.checkIfModalWindowDisplayed());
         Assert.assertEquals(mainPage.getInfoTextAboutSuccessTransfer(), successMessageAfterTransfer);
     }
 
