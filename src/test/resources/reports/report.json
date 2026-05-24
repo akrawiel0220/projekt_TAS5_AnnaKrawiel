@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "status": "active",
+    "username": "klient_jan",
+    "email": "jan.kowalski@example.com"
+  },
+  {
+    "id": 2,
+    "status": "inactive",
+    "username": "klient_anna",
+    "email": "anna.nowak@example.com"
+  }
+]

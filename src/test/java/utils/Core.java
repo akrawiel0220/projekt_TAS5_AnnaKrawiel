@@ -39,7 +39,6 @@ public class Core {
         if (parent != null) {
             parent.mkdirs();
         }
-
         try {
             File source = ((TakesScreenshot) activeDriver).getScreenshotAs(OutputType.FILE);
             FileHandler.copy(source, destination);

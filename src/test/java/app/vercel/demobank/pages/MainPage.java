@@ -24,6 +24,9 @@ public class MainPage {
     @FindBy(xpath = "//a[@href='phone.html'][contains(normalize-space(),'doładowanie telefonu')]")
     private WebElement phoneTab;
 
+    @FindBy(xpath = "//a[@href='reports.html'][contains(normalize-space(),'raporty')]")
+    private WebElement reportsTab;
+
     @FindBy(css = "user_name")
     private WebElement accountName;
 
@@ -57,6 +60,18 @@ public class MainPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
         wait.until(ExpectedConditions.visibilityOf(pulpitTab));
+    }
+
+    @Step("Klikamy w zakładke 'doładowanie telefonu'")
+    public PhonePage clickPhoneTopUpTab() {
+        phoneTab.click();
+        return new PhonePage(driver);
+    }
+
+    @Step("Klikamy w zakładke 'raporty'")
+    public ReportsPage clickReportTab() {
+        reportsTab.click();
+        return new ReportsPage(driver);
     }
 
     @Step("Strona główna wyświetla sie")
@@ -117,11 +132,5 @@ public class MainPage {
         } catch (Exception e) {
             return false;
         }
-    }
-
-    @Step("Klikamy w zakładke 'doładowanie telefonu'")
-    public PhonePage clickPhoneTopUpTab() {
-        phoneTab.click();
-        return new PhonePage(driver);
     }
 }

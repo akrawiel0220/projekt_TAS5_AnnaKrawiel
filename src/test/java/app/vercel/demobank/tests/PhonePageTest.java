@@ -12,7 +12,6 @@ public class PhonePageTest extends DemoBankBaseTest {
 
     @Test(description = "Doładowanie telefonu")
     public void phoneTopUpValidTest() {
-
         String receiverNumberExpected = "502 xxx xxx";
         String amountTopUpToSend = "50,00";
         String successMessageAfterTopUp = "Doładowanie wykonane! " + amountTopUpToSend + "PLN na numer " + receiverNumberExpected;
