@@ -15,6 +15,8 @@ public class MainPageTest extends DemoBankBaseTest {
         String expectedReceiver = "Chuck Demobankowy";
         String amountToSend = "120,00";
         String titleTransferText = "Zwykły przelew";
+        String successMessageAfterTransfer = "Przelew wykonany! " + expectedReceiver + " - " + amountToSend + "PLN - " + titleTransferText;
+
         MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);
         mainPage.selectReceiverName();
         Assert.assertEquals(mainPage.selectReceiverName(), expectedReceiver);
@@ -29,16 +31,13 @@ public class MainPageTest extends DemoBankBaseTest {
         Assert.assertEquals(textsFromTransferModalWindow, expectedTextsTransferModalWindow);
         transferModalPage.clickOkButton();
         Assert.assertFalse(transferModalPage.checkIfModalWindowIsDisplayed());
+        Assert.assertEquals(mainPage.getInfoTextAboutSuccessTransfer(), successMessageAfterTransfer);
     }
 
-//    @Test(description = "Użytkownik wykonuje szybki przelew z zakładki 'mój pulpit, nie wpisując danych - test negatywny'")
-//    public void fastBankTransferWithoutSetDataInValidTest() {
-//        MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);
-//        mainPage.clickExecuteButton();
-//
-//        Assert.assertTrue(mainPage.);
-//        //dokończyć
-//    }
-
-
+    @Test(description = "Użytkownik wykonuje szybki przelew z zakładki 'mój pulpit, nie wpisując danych - test negatywny'")
+    public void fastBankTransferWithoutSetDataInValidTest() {
+        MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);
+        mainPage.clickExecuteButton();
+        Assert.assertTrue(mainPage.checkIfErrorMessagesVisible(5));
+    }
 }

@@ -36,6 +36,19 @@ public class MainPage {
     @FindBy(id = "execute_btn")
     private WebElement executeBtn;
 
+    @FindBy(id = "show_messages")
+    private WebElement messageAboutSuccessTransfer;
+
+    @FindBy(id = "error_widget_1_transfer_receiver")
+    private WebElement fastTransferFirstErrorMessage;
+
+    @FindBy(id = "error_widget_1_transfer_amount")
+    private WebElement fastTransferSecondErrorMessage;
+
+    @FindBy(id = "error_widget_1_transfer_title")
+    private WebElement fastTransferThirdErrorMessage;
+
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -72,7 +85,7 @@ public class MainPage {
         return transferAmount.getAttribute("value");
     }
 
-    @Step("Wpisujemy tytuł przelewu i zwracamy wpisany tekstu")
+    @Step("Wpisujemy tytuł przelewu i zwracamy wpisany tekst")
     public String setAndGetTransferTitle(String titleTransferText) {
         transferTitle.clear();
         transferTitle.sendKeys(titleTransferText);
@@ -85,10 +98,22 @@ public class MainPage {
         return new TransferModalPage(driver);
     }
 
+    @Step("Weryfikacja wiadomości o przelewie")
+    public String getInfoTextAboutSuccessTransfer() {
+        return messageAboutSuccessTransfer.getText();
+    }
+
     @Step("Sprawdzamy obowiązkowość uzupełnienia pól dla szybkiego przelewu")
-    public TransferModalPage clickExecu() {
-        executeBtn.click();
-        return new TransferModalPage(driver);
+    public boolean checkIfErrorMessagesVisible(long timeoutSeconds) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+            wait.until(ExpectedConditions.visibilityOf(fastTransferFirstErrorMessage));
+            wait.until(ExpectedConditions.visibilityOf(fastTransferSecondErrorMessage));
+            wait.until(ExpectedConditions.visibilityOf(fastTransferThirdErrorMessage));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
