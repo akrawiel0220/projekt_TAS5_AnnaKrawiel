@@ -80,12 +80,12 @@ public class LoginPage {
         return this;
     }
 
-    @Step("Pobiera komunikat błędu: {errorMessageLogin}")
+    @Step("Pobiera komunikat błędu związanego z błędnym loginem")
     public String getErrorMessageLogin() {
         return wait.until(ExpectedConditions.visibilityOf(errorMessageLogin)).getText();
     }
 
-    @Step("Pobiera komunikat błędu: {errorMessagePassword}")
+    @Step("Pobiera komunikat błędu związanego z błędnym hasłem")
     public String getErrorMessagePassword() {
         return wait.until(ExpectedConditions.visibilityOf(errorMessagePassword)).getText();
     }
