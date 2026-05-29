@@ -15,7 +15,6 @@ public class DriverFactory {
         if ("firefox".equalsIgnoreCase(browser)) {
             return new FirefoxDriver();
         }
-
         return new ChromeDriver(buildChromeOptions());
     }
 

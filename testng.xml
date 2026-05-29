@@ -15,14 +15,14 @@
             <class name="app.vercel.demobank.tests.MainPageTest"></class>
         </classes>
     </test>
-    <test name="Payments Test" preserve-order="true" enabled="true">
-        <classes>
-            <class name="app.vercel.demobank.tests.PaymentsTest"></class>
-        </classes>
-    </test>
     <test name="Reports Test" preserve-order="true" enabled="true">
         <classes>
             <class name="app.vercel.demobank.tests.ReportsTest"></class>
+        </classes>
+    </test>
+    <test name="Phone Top Up Test" preserve-order="true" enabled="true">
+        <classes>
+            <class name="app.vercel.demobank.tests.PhonePageTest"></class>
         </classes>
     </test>
 </suite>

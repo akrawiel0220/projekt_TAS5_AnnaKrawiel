@@ -4,14 +4,12 @@ import app.vercel.demobank.pages.LoginPage;
 import app.vercel.demobank.pages.MainPage;
 import app.vercel.demobank.pages.TransferModalPage;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners
 public class MainPageTest extends DemoBankBaseTest {
 
-    @Test(description = "Użytkownik wykonuje szybki przelew z zakładki 'mój pulpit'")
-    public void fastBankTransferValidTest() {
+    @Test(description = "TC004 Użytkownik wykonuje szybki przelew z zakładki 'mój pulpit'")
+    public void TC004fastBankTransferValidTest() {
         String expectedReceiver = "Chuck Demobankowy";
         String amountToSend = "120,00";
         String titleTransferText = "Zwykły przelew";
@@ -34,8 +32,8 @@ public class MainPageTest extends DemoBankBaseTest {
         Assert.assertEquals(mainPage.getInfoTextAboutSuccessTransfer(), successMessageAfterTransfer);
     }
 
-    @Test(description = "Użytkownik wykonuje szybki przelew z zakładki 'mój pulpit, nie wpisując danych - test negatywny'")
-    public void fastBankTransferWithoutSetDataInValidTest() {
+    @Test(description = "TC005 Użytkownik wykonuje szybki przelew z zakładki 'mój pulpit, nie wpisując danych - test negatywny'")
+    public void TC005fastBankTransferWithoutSetDataInValidTest() {
         MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);
         mainPage.clickExecuteButton();
         Assert.assertTrue(mainPage.checkIfErrorMessagesVisible(5));

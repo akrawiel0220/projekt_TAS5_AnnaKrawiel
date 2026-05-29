@@ -1,0 +1,5 @@
+amount,should_show_error,expected_message
+45.00,false,
+50.00,false,
+50.01,true,kwota musi być mniejsza od 50
+55.50,true,kwota musi być mniejsza od 50

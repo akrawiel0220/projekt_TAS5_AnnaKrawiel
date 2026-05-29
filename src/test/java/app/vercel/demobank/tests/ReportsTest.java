@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 
 public class ReportsTest extends DemoBankBaseTest {
 
-    @Test(description = "Raporty - przesłanie pliku json")
-    public void uploadingReportFileValidTest() {
+    @Test(description = "TC008 Raporty - przesłanie pliku json")
+    public void TC008uploadingReportFileValidTest() {
         String fileName = "report.json";
         String successInfoMessage = "Plik przesłany! " + fileName;
         MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);

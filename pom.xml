@@ -24,25 +24,19 @@
                         <suiteXmlFiles>
                             <suiteXmlFile>testng.xml</suiteXmlFile>
                         </suiteXmlFiles>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.5.4</version>
-                    <configuration>
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.25.1/aspectjweaver-1.9.25.1.jar"
                         </argLine>
                         <systemPropertyVariables>
-                            <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                            <allure.results.directory>${project.build.directory}/allure-results
+                            </allure.results.directory>
                         </systemPropertyVariables>
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>io.qameta.allure</groupId>
                     <artifactId>allure-maven</artifactId>
-                    <version>2.12.0</version>
+                    <version>2.17.0</version>
                     <configuration>
                         <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                         <reportDirectory>${project.basedir}/allure-report</reportDirectory>
@@ -95,6 +89,6 @@
         </dependency>
     </dependencies>
     <reporting>
-            <excludeDefaults>true</excludeDefaults>
+        <excludeDefaults>true</excludeDefaults>
     </reporting>
 </project>

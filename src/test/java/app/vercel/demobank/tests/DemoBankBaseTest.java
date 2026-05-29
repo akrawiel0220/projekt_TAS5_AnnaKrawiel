@@ -1,8 +1,14 @@
 package app.vercel.demobank.tests;
 
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import utils.Core;
+
+import java.io.ByteArrayInputStream;
 
 public class DemoBankBaseTest extends Core {
 

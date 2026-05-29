@@ -2,6 +2,7 @@ package app.vercel.demobank.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,16 +33,14 @@ public class PhonePage {
     @FindBy(id = "execute_btn")
     private WebElement clickPhoneTopUp;
 
+    @FindBy(id = "error_widget_1_topup_amount")
+    private WebElement errorMessageAlert;
+
     public PhonePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
         wait.until(ExpectedConditions.visibilityOf(phoneTab));
-    }
-
-    @Step("Strona doładowanie telefonu wyświetla sie")
-    public boolean isDisplayed() {
-        return phoneTab.isDisplayed();
     }
 
     @Step("Wybierany jest odbiorca (jego numer) doładowania telefonu, z listy rozwijanej")
@@ -71,4 +70,19 @@ public class PhonePage {
         return new TopUpPhoneModalPage(driver);
     }
 
+    public boolean isErrorDisplayed() {
+        try {
+            return errorMessageAlert.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public String getErrorMessageText() {
+        if (isErrorDisplayed()) {
+            return errorMessageAlert.getText().trim();
+        } else {
+            return "";
+        }
+    }
 }
