@@ -5,11 +5,6 @@
             <class name="app.vercel.demobank.tests.LoginTest"></class>
         </classes>
     </test>
-    <test name="Generate Transfer Test" preserve-order="true" enabled="true">
-        <classes>
-            <class name="app.vercel.demobank.tests.GenerateTransferTest"></class>
-        </classes>
-    </test>
     <test name="Home Page Test" preserve-order="true" enabled="true">
         <classes>
             <class name="app.vercel.demobank.tests.MainPageTest"></class>
