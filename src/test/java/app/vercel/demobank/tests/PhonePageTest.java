@@ -13,7 +13,7 @@ import java.nio.file.Path;
 
 public class PhonePageTest extends DemoBankBaseTest {
 
-    @Test(description = "TC006 Doładowanie telefonu")
+    @Test(description = "TC006 Poprawne doładowanie telefonu")
     public void TC006phoneTopUpValidTest() {
         String receiverNumberExpected = "502 xxx xxx";
         String amountTopUpToSend = "50,00";
@@ -35,16 +35,15 @@ public class PhonePageTest extends DemoBankBaseTest {
         Assert.assertEquals(mainPage.getInfoTextAboutSuccessTransfer(), successMessageAfterTopUp);
     }
 
-    @Test(description = "TC007 Walidacja pola tekstowego 'kwota' w zakładce 'doładowanie telefonu' - kwota musi być mniejsza lub równa 50")
+    @Test(description = "TC007 Walidacja pola kwoty w doładowaniu telefonu (pętla CSV)")
+
     public void TC007csvAmountValidationLoop() throws Exception {
         //na stronie jest błąd w komunikacie błędu "kwota musi być mniejsza od 50", ale zakładam, że kwota musi być mniejsza lub równa 50.00
 
         Path csvPath = Path.of("src/test/resources/phoneTopUp/amountValidation.csv");
-
         try (CSVReader csvReader = new CSVReader(new FileReader(csvPath.toFile()))) {
             String[] line;
             boolean skipHeader = true;
-
             while ((line = csvReader.readNext()) != null) {
                 if (skipHeader) {
                     skipHeader = false;

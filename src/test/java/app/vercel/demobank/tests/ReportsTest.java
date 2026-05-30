@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class ReportsTest extends DemoBankBaseTest {
 
-    @Test(description = "TC008 Raporty - przesłanie pliku json")
+    @Test(description = "TC008 Poprawne przesłanie pliku JSON w zakładce raportów, w sekcji „Prześlij plik json”.")
     public void TC008uploadingReportFileValidTest() {
         String fileName = "report.json";
         String successInfoMessage = "Plik przesłany! " + fileName;
