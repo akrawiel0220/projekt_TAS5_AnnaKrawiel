@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -88,7 +87,6 @@ public class MainPage {
 
     @Step("Wybierany jest odbiorca z listy rozwijaneh")
     public String selectReceiverName() {
-        Assert.assertTrue(isDisplayed());
         Select select = new Select(receiverDropdown);
         select.selectByValue("2");
         return select.getFirstSelectedOption().getText();
@@ -115,7 +113,6 @@ public class MainPage {
 
     @Step("Klikamy w przycisk 'wykonaj'")
     public TransferModalPage clickExecuteButton() {
-        Assert.assertTrue(isDisplayed());
         executeBtn.click();
         return new TransferModalPage(driver);
     }
@@ -138,12 +135,12 @@ public class MainPage {
         }
     }
 
-        @Step("Pobierz teksty zawarte jako komunikaty błędów")
-        public List<String> getErrorMessageTexts() {
-            return List.of(
-                    fastTransferFirstErrorMessage.getText(),
-                    fastTransferSecondErrorMessage.getText(),
-                    fastTransferThirdErrorMessage.getText()
-            );
-        }
+    @Step("Pobierz teksty zawarte jako komunikaty błędów")
+    public List<String> getErrorMessageTexts() {
+        return List.of(
+                fastTransferFirstErrorMessage.getText(),
+                fastTransferSecondErrorMessage.getText(),
+                fastTransferThirdErrorMessage.getText()
+        );
+    }
 }

@@ -18,6 +18,7 @@ public class MainPageTest extends DemoBankBaseTest {
         String successMessageAfterTransfer = "Przelew wykonany! " + expectedReceiver + " - " + amountToSend + "PLN - " + titleTransferText;
 
         MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);
+        Assert.assertTrue(mainPage.isDisplayed());
         mainPage.selectReceiverName();
         Assert.assertEquals(mainPage.selectReceiverName(), expectedReceiver);
         mainPage.setTransferAmount(amountToSend);
@@ -37,6 +38,7 @@ public class MainPageTest extends DemoBankBaseTest {
     @Test(description = "TC005 Szybki przelew bez wpisywania danych - test negatywny")
     public void TC005fastBankTransferWithoutSetDataInValidTest() {
         MainPage mainPage = new LoginPage(driver).open(baseUrl).loginValid(username, password);
+        Assert.assertTrue(mainPage.isDisplayed());
         mainPage.clickExecuteButton();
         Assert.assertTrue(mainPage.checkIfErrorMessagesVisible(5));
         List<String> errorsTexts = mainPage.getErrorMessageTexts();
